@@ -1,0 +1,10 @@
+#BASH COMPLETION --------------------------------
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
+
+#GIT COMPLETION --------------------------------
+	source ~/.bash/helpers/git-completion.bash
+
+#GRUNT COMPLETION ------------------------------
+	#eval "$(grunt --completion=bash)"
