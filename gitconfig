@@ -1,12 +1,9 @@
-[user]
-	name = {name}
-	email = {email}
 [core]
 	quotepath = false
 	whitespace = ignore
-[http]
-	placeholder = null
-[https]
-	placeholder = null
 [push]
 	default = simple
+[credential]
+	helper = /opt/boxen/bin/boxen-git-credential
+[core]
+	excludesfile = /opt/boxen/config/git/gitignore

@@ -1,5 +1,5 @@
 #INCLUDED SOURCES -------------------------------
-  source ~/.bash/context.sh
+  source /opt/boxen/env.sh
 	source ~/.bash/colors.sh
 	source ~/.bash/environment.sh
 	source ~/.bash/path.sh
