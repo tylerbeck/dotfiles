@@ -1,10 +1,10 @@
 __user_at_host_ps1 ()
 {
-	if [ "$USER" = "{user}" ] &&
-	   [ $(hostname -fs) = "{host}" ]; then
+	if [ "$USER" = "$CONFIGURED_USER" ] &&
+	   [ $(hostname -fs) = "$CONFIGURED_HOST" ]; then
 		printf "•"
 	elif [ "$USER" = "root" ] &&
-	   		[ $(hostname -fs) = "{host}" ]; then
+	   		[ $(hostname -fs) = "$CONFIGURED_HOST" ]; then
 		printf "root"
 	else
 		printf "$USER@$(hostname -fs)"
