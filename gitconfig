@@ -10,3 +10,7 @@
 [user]
 	email = tyler@tylerbeck.com
 	name = Tyler Beck
+[http]
+	placeholder = false
+[https]
+	placeholder = false
