@@ -1,6 +1,7 @@
 #INCLUDED SOURCES -------------------------------
-source /opt/boxen/user.sh
-source /opt/boxen/env.sh
+source ~/.bash/user.sh
+source /opt/boxen_env.sh
+source ~/.bash/squid_proxy.sh
 source ~/.bash/colors.sh
 source ~/.bash/environment.sh
 source ~/.bash/path.sh

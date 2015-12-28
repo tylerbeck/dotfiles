@@ -7,3 +7,6 @@
 	helper = /opt/boxen/bin/boxen-git-credential
 [core]
 	excludesfile = /opt/boxen/config/git/gitignore
+[user]
+	email = tyler@tylerbeck.com
+	name = Tyler Beck
