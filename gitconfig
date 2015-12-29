@@ -12,7 +12,5 @@
 	name = Tyler Beck
 [http]
 	placeholder = false
-	proxy = http://localhost:3128
 [https]
 	placeholder = false
-	proxy = https://localhost:3128
