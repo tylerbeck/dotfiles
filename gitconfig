@@ -4,7 +4,8 @@
 [push]
 	default = simple
 [credential]
-	helper = /opt/boxen/bin/boxen-git-credential
+	#helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
 [core]
 	excludesfile = /opt/boxen/config/git/gitignore
 [user]

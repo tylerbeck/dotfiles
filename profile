@@ -8,3 +8,4 @@ source ~/.bash/path.sh
 source ~/.bash/completion.sh
 source ~/.bash/aliases.sh
 source ~/.bash/prompt.sh
+source ~/.bash/proxy.sh
