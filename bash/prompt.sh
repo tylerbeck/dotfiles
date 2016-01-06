@@ -11,7 +11,7 @@
 
 		#switch coloring if sshing
 		PC_USER_HOST=${PC_LIGHTGREEN}
-		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ "$USER" = "root" ]; then
 	        PC_USER_HOST=${PC_LIGHTRED}
 		else
 	        case $(ps -o comm= -p $PPID)
