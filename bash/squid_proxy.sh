@@ -30,21 +30,24 @@
 
    apm config rm proxy
    apm config rm https-proxy
+
+   proxycmd=$'#!/bin/sh\nstopProxy\n'
+   echo "$proxycmd" > ~/.bash/proxy.sh
 }
 
  initProxy(){
    http_proxy_value="http://$1:$2"
    https_proxy_value="https://$1:$2"
-   no_proxy_value="localhost,127.0.0.1"
+   no_proxy_value="localhost,127.0.0.1,192.168.99.100,192.168.99.101,192.168.99.102,192.168.99.103"
 
    git config --global http.proxy $http_proxy_value
    git config --global https.proxy $https_proxy_value
 
    npm config set proxy $http_proxy_value
-   npm config set https-proxy $https_proxy_value
+   npm config set https-proxy $http_proxy_value
 
    apm config set proxy $http_proxy_value
-   apm config set https-proxy $https_proxy_value
+   apm config set https-proxy $http_proxy_value
 
    assignProxy $http_proxy_value $https_proxy_value $no_proxy_value
  }
@@ -57,4 +60,7 @@ startProxy(){
    apm config set strict-ssl false
 
    initProxy $domain $port
+
+   proxycmd=$'#!/bin/sh\nstartProxy\n'
+   echo "$proxycmd" > ~/.bash/proxy.sh
  }
