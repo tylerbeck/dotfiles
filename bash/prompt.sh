@@ -1,7 +1,7 @@
 #SCRIPTS ----------------------------------------
-	source ~/.bash/helpers/git-prompt.sh
-	source ~/.bash/helpers/proxy-prompt.sh
-	source ~/.bash/helpers/user-at-host-prompt.sh
+	source "${DOTFILES}/bash/helpers/git-prompt.sh"
+	source "${DOTFILES}/bash/helpers/proxy-prompt.sh"
+	source "${DOTFILES}/bash/helpers/user-at-host-prompt.sh"
 
 #ENV VARIABLES ----------------------------------
 	export GIT_PS1_SHOWDIRTYSTATE=1
@@ -25,11 +25,11 @@
 		#switch prompt based on terminal width
 		COLS=$( tput cols )
 		if [[ $(tput cols) -lt 50 ]]; then
-	        PS1="$( __proxy_ps1 )$PC_USER_HOST[$( __user_at_host_ps1 )]$PC_LIGHTBLUE[\W]$PC_LIGHTPURPLE$(__git_ps1 "[%s]")\n$PC_DARKGRAY\$ $PC_DEFAULT"
+	        PS1="$( __proxy_ps1 )$PC_USER_HOST[$( __user_at_host_ps1 )]$PC_LIGHTBLUE[\W]$PC_LIGHTPURPLE$(__git_ps1 "[%s]")\n$PC_PURPLE\$$PC_DEFAULT "
 		elif [[ $(tput cols) -lt 100 ]]; then
-	        PS1="$( __proxy_ps1 )$PC_USER_HOST[$( __user_at_host_ps1 )]$PC_LIGHTBLUE[\W]$PC_LIGHTPURPLE$(__git_ps1 "[%s]")$PC_DARKGRAY\$ $PC_DEFAULT"
+	        PS1="$( __proxy_ps1 )$PC_USER_HOST[$( __user_at_host_ps1 )]$PC_LIGHTBLUE[\W]$PC_LIGHTPURPLE$(__git_ps1 "[%s]")$PC_PURPLE\$$PC_DEFAULT "
 	    else
-	        PS1="$( __proxy_ps1 )$PC_USER_HOST[$( __user_at_host_ps1 )]$PC_LIGHTBLUE[\w]$PC_LIGHTPURPLE$(__git_ps1 "[%s]")$PC_DARKGRAY\$ $PC_DEFAULT"
+	        PS1="$( __proxy_ps1 )$PC_USER_HOST[$( __user_at_host_ps1 )]$PC_LIGHTBLUE[\w]$PC_LIGHTPURPLE$(__git_ps1 "[%s]")$PC_PURPLE\$$PC_DEFAULT "
 	    fi
 	}
 

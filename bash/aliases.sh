@@ -1,9 +1,9 @@
 #COMMAND ALIASES --------------------------------
 	alias ls='ls -a'
 
-#GIT ALIASES ---------------------------------
+#GIT ALIASES ------------------------------------
 
-#I CAN'T TYPE ALIASES ---------------------------------
+#I CAN'T TYPE ALIASES ---------------------------
 	alias nom='npm'
 	alias gti='git'
 

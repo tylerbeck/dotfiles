@@ -2,7 +2,7 @@ __proxy_ps1 ()
 {
   proxy_prompt=""
   proxy_str="<"
-  currentProxyCmd="$(cat .bash/proxy.sh | grep Proxy)"
+  currentProxyCmd="$(cat "${DOTFILES}/bash/proxy.sh" | grep Proxy)"
   if [ "$HTTP_PROXY" = "http://localhost:3128" ] ||
    	 [ "$currentProxyCmd" = "startProxy" ]; then
     if [ "$HTTP_PROXY" = "" ] ||

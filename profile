@@ -1,11 +1,21 @@
+#GET BASE PATH- ---------------------------------
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+
+export DOTFILES="$(dirname "$SOURCE")"
+
 #INCLUDED SOURCES -------------------------------
-source ~/.bash/user.sh
+
+source "${DOTFILES}/bash/user.sh"
 source /opt/boxen/env.sh
-source ~/.bash/squid_proxy.sh
-source ~/.bash/colors.sh
-source ~/.bash/environment.sh
-source ~/.bash/path.sh
-source ~/.bash/completion.sh
-source ~/.bash/aliases.sh
-source ~/.bash/prompt.sh
-source ~/.bash/proxy.sh
+source "${DOTFILES}/bash/squid_proxy.sh"
+source "${DOTFILES}/bash/colors.sh"
+source "${DOTFILES}/bash/environment.sh"
+source "${DOTFILES}/bash/completion.sh"
+source "${DOTFILES}/bash/aliases.sh"
+source "${DOTFILES}/bash/prompt.sh"
+source "${DOTFILES}/bash/proxy.sh"

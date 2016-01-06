@@ -1,3 +1,3 @@
 #!/bin/sh
 proxycmd=$'#!/bin/sh\nstartProxy\n'
-echo "$proxycmd" > ~/.bash/proxy.sh
+echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"

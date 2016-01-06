@@ -1,6 +1,6 @@
 #!/bin/bash
 
- assignProxy(){
+assignProxy(){
    HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY"
    HTTPS_PROXY_ENV="https_proxy HTTPS_PROXY"
    for envar in $HTTP_PROXY_ENV
@@ -15,9 +15,9 @@
    do
       export $envar=$3
    done
- }
+}
 
- stopProxy(){
+stopProxy(){
    assignProxy ""
    npm config set strict-ssl true
    apm config set strict-ssl true
@@ -32,10 +32,10 @@
    apm config rm https-proxy
 
    proxycmd=$'#!/bin/sh\nstopProxy\n'
-   echo "$proxycmd" > ~/.bash/proxy.sh
+   echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
 }
 
- initProxy(){
+initProxy(){
    http_proxy_value="http://$1:$2"
    https_proxy_value="https://$1:$2"
    no_proxy_value="localhost,127.0.0.1,192.168.99.100,192.168.99.101,192.168.99.102,192.168.99.103"
@@ -62,5 +62,5 @@ startProxy(){
    initProxy $domain $port
 
    proxycmd=$'#!/bin/sh\nstartProxy\n'
-   echo "$proxycmd" > ~/.bash/proxy.sh
+   echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
  }
