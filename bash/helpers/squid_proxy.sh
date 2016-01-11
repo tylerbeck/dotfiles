@@ -33,7 +33,7 @@ proxyStop(){
    dockerUnsetProxy
 
    proxycmd=$'#!/bin/sh\nproxyStop\n'
-   echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
+   echo "$proxycmd" > "${DOTFILES}/bash/external/proxy.sh"
 }
 
 proxyInit(){
@@ -66,12 +66,12 @@ proxyStart(){
    dockerSetProxy $(ipconfig getifaddr en0) $port
 
    proxycmd=$'#!/bin/sh\nproxyStart\n'
-   echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
+   echo "$proxycmd" > "${DOTFILES}/bash/external/proxy.sh"
  }
 
  proxyStatus(){
    status="inactive"
-   currentProxyCmd="$(cat "${DOTFILES}/bash/proxy.sh" | grep proxy)"
+   currentProxyCmd="$(cat "${DOTFILES}/bash/external/proxy.sh" | grep proxy)"
    if [ "$HTTP_PROXY" = "http://localhost:3128" ] ||
        [ "$currentProxyCmd" = "proxyStart" ]; then
      if [ "$HTTP_PROXY" = "" ] ||

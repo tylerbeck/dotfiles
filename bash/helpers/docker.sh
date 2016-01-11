@@ -47,5 +47,5 @@ dockerUseMachine(){
   fi
   eval "$(docker-machine env $name)"
   dockerenv=$'#!/bin/sh\neval "$(docker-machine env '$name')"'
-  echo "$dockerenv" > "${DOTFILES}/bash/docker.sh"
+  echo "$dockerenv" > "${DOTFILES}/bash/external/docker.sh"
 }

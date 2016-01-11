@@ -3,7 +3,6 @@ __proxy_ps1 ()
   proxy_status="$(proxyStatus)"
   proxy_prompt=""
   proxy_str="<"
-  currentProxyCmd="$(cat "${DOTFILES}/bash/proxy.sh" | grep Proxy)"
   if [ "$proxy_status" = "active" ]; then
     proxy_prompt="$PC_YELLOW${proxy_str}"
   fi

@@ -9,7 +9,7 @@
 [core]
 	excludesfile = /opt/boxen/config/git/gitignore
 [user]
-	email = tyler@tylerbeck.com
+	email = tyler.beck@kroger.com
 	name = Tyler Beck
 [http]
 	placeholder = false
