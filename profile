@@ -12,7 +12,9 @@ export DOTFILES="$(dirname "$SOURCE")"
 
 source "${DOTFILES}/bash/user.sh"
 source /opt/boxen/env.sh
-source "${DOTFILES}/bash/squid_proxy.sh"
+source "${DOTFILES}/bash/helpers/docker.sh"
+source "${DOTFILES}/bash/docker.sh"
+source "${DOTFILES}/bash/helpers/squid_proxy.sh"
 source "${DOTFILES}/bash/colors.sh"
 source "${DOTFILES}/bash/environment.sh"
 source "${DOTFILES}/bash/completion.sh"

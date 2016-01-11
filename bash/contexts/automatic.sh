@@ -1,3 +1,3 @@
 #!/bin/sh
-proxycmd=$'#!/bin/sh\nstopProxy\n'
-echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
+proxycmd=$'#!/bin/sh\nproxyStop\n'
+echo "$proxycmd" > "/Users/kon4220/Projects/dotfiles/bash/proxy.sh"

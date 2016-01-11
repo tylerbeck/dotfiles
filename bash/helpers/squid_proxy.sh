@@ -1,6 +1,5 @@
 #!/bin/bash
-
-assignProxy(){
+proxyAssign(){
    HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY"
    HTTPS_PROXY_ENV="https_proxy HTTPS_PROXY"
    for envar in $HTTP_PROXY_ENV
@@ -17,8 +16,8 @@ assignProxy(){
    done
 }
 
-stopProxy(){
-   assignProxy ""
+proxyStop(){
+   proxyAssign ""
    npm config set strict-ssl true
    apm config set strict-ssl true
 
@@ -31,14 +30,16 @@ stopProxy(){
    apm config rm proxy
    apm config rm https-proxy
 
-   proxycmd=$'#!/bin/sh\nstopProxy\n'
+   dockerUnsetProxy
+
+   proxycmd=$'#!/bin/sh\nproxyStop\n'
    echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
 }
 
-initProxy(){
+proxyInit(){
    http_proxy_value="http://$1:$2"
    https_proxy_value="https://$1:$2"
-   no_proxy_value="localhost,127.0.0.1,192.168.99.100,192.168.99.101,192.168.99.102,192.168.99.103"
+   no_proxy_value="localhost,127.0.0.1,docker.kroger.com,$(docker-machine ip default)"
 
    git config --global http.proxy $http_proxy_value
    git config --global https.proxy $https_proxy_value
@@ -49,18 +50,36 @@ initProxy(){
    apm config set proxy $http_proxy_value
    apm config set https-proxy $http_proxy_value
 
-   assignProxy $http_proxy_value $https_proxy_value $no_proxy_value
+   dockerSetNoProxy $no_proxy_value
+   proxyAssign $http_proxy_value $https_proxy_value $no_proxy_value
  }
 
-startProxy(){
+proxyStart(){
    domain=localhost
    port=3128
 
    npm config set strict-ssl false
    apm config set strict-ssl false
 
-   initProxy $domain $port
+   proxyInit $domain $port
 
-   proxycmd=$'#!/bin/sh\nstartProxy\n'
+   dockerSetProxy $(ipconfig getifaddr en0) $port
+
+   proxycmd=$'#!/bin/sh\nproxyStart\n'
    echo "$proxycmd" > "${DOTFILES}/bash/proxy.sh"
+ }
+
+ proxyStatus(){
+   status="inactive"
+   currentProxyCmd="$(cat "${DOTFILES}/bash/proxy.sh" | grep proxy)"
+   if [ "$HTTP_PROXY" = "http://localhost:3128" ] ||
+       [ "$currentProxyCmd" = "proxyStart" ]; then
+     if [ "$HTTP_PROXY" = "" ] ||
+         [ "$currentProxyCmd" = "proxyStop" ]; then
+          status="dirty"
+     else
+       status="active"
+     fi
+   fi
+   echo "$status"
  }
