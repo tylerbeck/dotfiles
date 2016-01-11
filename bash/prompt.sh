@@ -1,7 +1,7 @@
 #SCRIPTS ----------------------------------------
-	source "${DOTFILES}/bash/helpers/git-prompt.sh"
-	source "${DOTFILES}/bash/helpers/proxy-prompt.sh"
-	source "${DOTFILES}/bash/helpers/user-at-host-prompt.sh"
+	source "${DOTFILE_SCRIPTS}/helpers/git-prompt.sh"
+	source "${DOTFILE_SCRIPTS}/helpers/proxy-prompt.sh"
+	source "${DOTFILE_SCRIPTS}/helpers/user-at-host-prompt.sh"
 
 #ENV VARIABLES ----------------------------------
 	export GIT_PS1_SHOWDIRTYSTATE=1

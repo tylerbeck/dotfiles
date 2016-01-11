@@ -39,13 +39,27 @@ dockerSetNoProxy(){
   fi
 }
 
+# dockerForwardPorts(){
+#
+# }
+#
+# dockerUnsetVPN(){
+#
+# }
+
 dockerUseMachine(){
   name=$1
+  if [ -n "$name"]; then
+    name="default"
+  fi
   if [ "$name" != "$DOCKER_MACHINE_NAME" ]; then
     docker-machine stop "$DOCKER_MACHINE_NAME"
     docker-machine start "$name"
   fi
   eval "$(docker-machine env $name)"
-  dockerenv=$'#!/bin/sh\neval "$(docker-machine env '$name')"'
-  echo "$dockerenv" > "${DOTFILES}/bash/external/docker.sh"
+  if [ "$name" = "vpn" ]; then
+    eval "sh ${DOTFILE_SCRIPTS}/external/docker-vpn-helper"
+  fi
+  dockerenv=$'#!/bin/sh\ndockerUseMachine '$name
+  echo "$dockerenv" > "${DOTFILE_SCRIPTS}/state/docker.sh"
 }

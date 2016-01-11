@@ -7,17 +7,17 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 
 export DOTFILES="$(dirname "$SOURCE")"
+export DOTFILE_SCRIPTS="$DOTFILES/bash"
 
 #INCLUDED SOURCES -------------------------------
-
-source "${DOTFILES}/bash/external/user.sh"
 source /opt/boxen/env.sh
-source "${DOTFILES}/bash/helpers/docker.sh"
-source "${DOTFILES}/bash/external/docker.sh"
-source "${DOTFILES}/bash/helpers/squid_proxy.sh"
-source "${DOTFILES}/bash/colors.sh"
-source "${DOTFILES}/bash/environment.sh"
-source "${DOTFILES}/bash/completion.sh"
-source "${DOTFILES}/bash/aliases.sh"
-source "${DOTFILES}/bash/prompt.sh"
-source "${DOTFILES}/bash/external/proxy.sh"
+source "${DOTFILE_SCRIPTS}/state/user.sh"
+source "${DOTFILE_SCRIPTS}/helpers/docker.sh"
+source "${DOTFILE_SCRIPTS}/state/docker.sh"
+source "${DOTFILE_SCRIPTS}/helpers/squid_proxy.sh"
+source "${DOTFILE_SCRIPTS}/colors.sh"
+source "${DOTFILE_SCRIPTS}/environment.sh"
+source "${DOTFILE_SCRIPTS}/completion.sh"
+source "${DOTFILE_SCRIPTS}/aliases.sh"
+source "${DOTFILE_SCRIPTS}/prompt.sh"
+source "${DOTFILE_SCRIPTS}/state/proxy.sh"

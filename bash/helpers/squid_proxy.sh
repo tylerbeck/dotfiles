@@ -1,4 +1,6 @@
 #!/bin/bash
+#REQUIRES: ${DOTFILE_SCRIPTS}/helpers/docker.sh
+
 proxyAssign(){
    HTTP_PROXY_ENV="http_proxy ftp_proxy all_proxy HTTP_PROXY FTP_PROXY ALL_PROXY"
    HTTPS_PROXY_ENV="https_proxy HTTPS_PROXY"
@@ -33,7 +35,7 @@ proxyStop(){
    dockerUnsetProxy
 
    proxycmd=$'#!/bin/sh\nproxyStop\n'
-   echo "$proxycmd" > "${DOTFILES}/bash/external/proxy.sh"
+   echo "$proxycmd" > "${DOTFILE_SCRIPTS}/state/proxy.sh"
 }
 
 proxyInit(){
@@ -66,12 +68,12 @@ proxyStart(){
    dockerSetProxy $(ipconfig getifaddr en0) $port
 
    proxycmd=$'#!/bin/sh\nproxyStart\n'
-   echo "$proxycmd" > "${DOTFILES}/bash/external/proxy.sh"
+   echo "$proxycmd" > "${DOTFILE_SCRIPTS}/state/proxy.sh"
  }
 
  proxyStatus(){
    status="inactive"
-   currentProxyCmd="$(cat "${DOTFILES}/bash/external/proxy.sh" | grep proxy)"
+   currentProxyCmd="$(cat "${DOTFILE_SCRIPTS}/state/proxy.sh" | grep proxy)"
    if [ "$HTTP_PROXY" = "http://localhost:3128" ] ||
        [ "$currentProxyCmd" = "proxyStart" ]; then
      if [ "$HTTP_PROXY" = "" ] ||

@@ -4,7 +4,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 #GIT COMPLETION --------------------------------
-	source "${DOTFILES}/bash/helpers/git-completion.bash"
+	source "${DOTFILE_SCRIPTS}/helpers/git-completion.bash"
 
 #GRUNT COMPLETION ------------------------------
 	#eval "$(grunt --completion=bash)"
