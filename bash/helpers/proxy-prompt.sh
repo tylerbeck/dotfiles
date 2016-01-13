@@ -1,12 +1,12 @@
 __proxy_ps1 ()
 {
-  proxy_status="$(proxyStatus)"
+  proxystatus="$(proxy status)"
   proxy_prompt=""
   proxy_str="<"
-  if [ "$proxy_status" = "active" ]; then
+  if [ "$proxystatus" = "active" ]; then
     proxy_prompt="$PC_YELLOW${proxy_str}"
   fi
-  if [ "$proxy_status" = "dirty" ]; then
+  if [ "$proxystatus" = "dirty" ]; then
     proxy_prompt="$PC_RED${proxy_str}"
   fi
   printf "$proxy_prompt"

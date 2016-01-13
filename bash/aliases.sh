@@ -1,5 +1,8 @@
 #COMMAND ALIASES --------------------------------
 	alias ls='ls -a'
+	alias projects='cd ~/Projects'
+
+#NPM ALIASES ------------------------------------
 
 #GIT ALIASES ------------------------------------
 

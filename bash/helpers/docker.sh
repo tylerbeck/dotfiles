@@ -39,9 +39,15 @@ dockerSetNoProxy(){
   fi
 }
 
-# dockerForwardPorts(){
-#
-# }
+dockerPortForward(){
+  port=$1
+  VBoxManage controlvm ${DOCKER_MACHINE_NAME} natpf1 dockerdaemon,tcp,127.0.0.1,${port},,2376
+}
+
+dockerRemovePortForward(){
+  port=$1
+  VBoxManage controlvm ${DOCKER_MACHINE_NAME} natpf1 delete
+}
 #
 # dockerUnsetVPN(){
 #
